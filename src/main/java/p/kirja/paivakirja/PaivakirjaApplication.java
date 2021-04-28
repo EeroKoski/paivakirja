@@ -42,10 +42,10 @@ public CommandLineRunner cellarHand(WineRepo wirepo, TypeRepo tyrepo, NoteRepo n
 				tyrepo.save(new Type("Fortified"));
 				tyrepo.save(new Type("Sparkling"));
 				
-				norepo.save(new Note("Seppo", "Oikein mukavan täyteläinen, jossa kivasti suklaata", "95"));
+				norepo.save(new Note(0, "Seppo", "Oikein mukavan täyteläinen, jossa kivasti suklaata", "95"));
 				
 				
-				wirepo.save(new Wine("Alves de Sousa", "Abandonado", "2011", "DOC Douro", "Douro", "Portugal", "Touriga Nacional, Touriga Franca", tyrepo.findByName("Red").get(0), norepo.findByName(1)));
+				wirepo.save(new Wine("Alves de Sousa", "Abandonado", "2011", "DOC Douro", "Douro", "Portugal", "Touriga Nacional, Touriga Franca", tyrepo.findByName("Red").get(0), norepo.findById(0)));
 				wirepo.save(new Wine("R. Lopez de Heredia", "Vina Tondonia", "1995", " DOCa Rioja Gran Reserva", "Rioja", "Spain", "Tempranillo", tyrepo.findByName("Red").get(0)));
 				wirepo.save(new Wine("Domaine Georges Vernay", "Terrasses de l'Empire", "2019", "AC Condrieu", "Rhone", "France", "Viognier", tyrepo.findByName("White").get(0)));
 				wirepo.save(new Wine("La Stoppa", "Ageno", "2011", "IGT Emilia-Romagna", "Emilia-Romagna", "Italy", "Malvasia", tyrepo.findByName("Orange").get(0)));

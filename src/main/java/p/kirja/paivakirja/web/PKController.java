@@ -52,6 +52,12 @@ public class PKController {
         wirepo.save(wine);
         return "redirect:main";
 	}
+	
+	@RequestMapping(value = "/saveNote", method = RequestMethod.POST)
+    public String save(Note note){
+        norepo.save(note);
+        return "redirect:main";
+	}
         
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     public String deleteWine(@PathVariable("id") Long Id, Model model) {
