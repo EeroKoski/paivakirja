@@ -22,7 +22,6 @@ public class Wine {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long wineid;
-	
 	private String producer;
 	private String name; 
 	private String appellation;
@@ -30,23 +29,26 @@ public class Wine {
 	private String country;
 	private String grapes;
 	private String vintage;
+	private String note;
+	private String points;
 	
 	@ManyToOne
 	@JoinColumn(name = "typeid")
 	@JsonManagedReference
 	private Type type;
 	
-	@JsonBackReference
+	/*@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "note")
-	private List<Note> notes;
+	private List<Note> notes; */
 
 	public Wine() {
 		super();
 	}
 
 	public Wine(String producer, String name, String appellation, String region, String country,
-			String grapes, String vintage, Type type, List<Note> notes) {
+			String grapes, String vintage, Type type, String note, String points) {
 		super();
+		this.wineid = wineid;
 		this.producer = producer;
 		this.name = name;
 		this.appellation = appellation;
@@ -55,7 +57,9 @@ public class Wine {
 		this.grapes = grapes;
 		this.vintage = vintage;
 		this.type = type;
-		this.notes = notes;
+		this.note = note;
+		this.points = points;
+
 	}
 
 	public long getWineid() {
@@ -130,19 +134,29 @@ public class Wine {
 		this.type = type;
 	}
 
-	public List<Note> getNotes() {
-		return notes;
+	public String getNote() {
+		return note;
 	}
 
-	public void setNotes(List<Note> notes) {
-		this.notes = notes;
+	public void setNote(String note) {
+		this.note = note;
+	}
+	
+	
+
+	public String getPoints() {
+		return points;
+	}
+
+	public void setPoints(String points) {
+		this.points = points;
 	}
 
 	@Override
 	public String toString() {
 		return "Wine [producer=" + producer + ", name=" + name + ", appellation=" + appellation
 				+ ", region=" + region + ", country=" + country + ", grapes=" + grapes + ", vintage=" + vintage
-				+ ", type=" + type + ", notes=" + notes + "]";
+				+ ", type=" + type + ", note=" + note +", points=" + points + "]";
 	}
 	
 	}

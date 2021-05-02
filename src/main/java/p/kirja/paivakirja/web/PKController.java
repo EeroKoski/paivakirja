@@ -11,8 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import p.kirja.paivakirja.domain.Note;
-import p.kirja.paivakirja.domain.NoteRepo;
+
 import p.kirja.paivakirja.domain.TypeRepo;
 import p.kirja.paivakirja.domain.Wine;
 import p.kirja.paivakirja.domain.WineRepo;
@@ -29,8 +28,7 @@ public class PKController {
 	private TypeRepo tyrepo;
 	
 	
-	@Autowired
-	private NoteRepo norepo;
+	
 	
 	@RequestMapping(value= {"/", "/main"})
 	public String wineList(Model model) {
@@ -42,7 +40,6 @@ public class PKController {
 	public String addWine(Model model) {
 		model.addAttribute("wine", new Wine());
 		model.addAttribute("types", tyrepo.findAll());
-		model.addAttribute("note", new Note());
 
 		return "addwine";
 	}
@@ -53,12 +50,7 @@ public class PKController {
         return "redirect:main";
 	}
 	
-	@RequestMapping(value = "/saveNote", method = RequestMethod.POST)
-    public String save(Note note){
-        norepo.save(note);
-        return "redirect:main";
-	}
-        
+	
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     public String deleteWine(@PathVariable("id") Long Id, Model model) {
     	wirepo.deleteById(Id);
@@ -71,7 +63,6 @@ public class PKController {
     public String editWine(@PathVariable("wineid") Long Id, Model model){
     	model.addAttribute("wine", wirepo.findById(Id));
 		model.addAttribute("types", tyrepo.findAll());
-		model.addAttribute("notes", norepo.findAll());
         return "editwine";
     }         
     

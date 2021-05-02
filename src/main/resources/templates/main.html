@@ -95,6 +95,8 @@ body, html {
 		<th scope="col">Country</th>
 		<th scope="col">Grapes</th>
 		<th scope="col">Type</th>
+		<th scope="col">Points</th>
+		
 		
 		<th sec:authorize="hasRole('ADMIN')"scope="col">Drink</th>
 		<th scope="col">Edit</th>
@@ -113,10 +115,12 @@ body, html {
 			<td th:text="${wine.country}"></td>
 			<td th:text="${wine.grapes}"></td>
 			<td th:text="${wine.type.name}"></td>
+			<td th:text="${wine.points}"></td>
 			
 			
- 			<td sec:authorize="hasRole('ADMIN')"><a th:href="@{/delete/{id}(id=${wine.id})}" class="btn btn-danger">Drink</a></td>
- 			<td><a th:href="@{/edit/{id}(id=${wine.id})}" class="btn btn-success">Edit</a></td>    		
+			
+ 			<td><a th:href="@{/delete/{id}(id=${wine.wineid})}" class="btn btn-danger">Drink</a></td>
+ 			<td><a th:href="@{/edit/{id}(id=${wine.wineid})}" class="btn btn-success">Edit</a></td>    		
 		</tr>	
 	</table></div></div>
 
