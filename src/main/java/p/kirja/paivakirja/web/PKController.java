@@ -57,11 +57,18 @@ public class PKController {
         return "redirect:../main";
     }
     
+    @RequestMapping(value = "/readnote/{id}", method = RequestMethod.GET)
+    public String readNote(@PathVariable("id") Long Id, Model model){
+    	model.addAttribute("wine", wirepo.findById(Id));
+		model.addAttribute("types", tyrepo.findAll());
+        return "/readnote";
+    }
+    
     
     
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
-    public String editWine(@PathVariable("wineid") Long Id, Model model){
-    	model.addAttribute("wine", wirepo.findById(Id));
+    public String editWine(@PathVariable("id") Long Id, Model model){
+    	model.addAttribute("wines", wirepo.findById(Id));
 		model.addAttribute("types", tyrepo.findAll());
         return "editwine";
     }         
@@ -73,7 +80,7 @@ public class PKController {
     }
 	
     @RequestMapping(value="/wine/{id}", method = RequestMethod.GET)
-    public @ResponseBody Optional<Wine> findWineRest(@PathVariable("wineid") Long Id) {	
+    public @ResponseBody Optional<Wine> findWineRest(@PathVariable("id") Long Id) {	
     	return wirepo.findById(Id);
     }       
     

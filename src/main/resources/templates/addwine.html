@@ -73,7 +73,7 @@ max-width: 100px;
         <nav>
           <ul class="nav nav-pills pull-right">
             
-            <li role="presentation"><a href="/cellar">Back to the winelist</a></li>
+            <li role="presentation"><a href="/main">Back to the winelist</a></li>
           </ul>
         </nav>
         <h3 class="text-muted">Add a wine</h3>
@@ -130,18 +130,25 @@ max-width: 100px;
 			
 			
 			
-        </div>
-        <div>
-        <h4>Label photo: </h4>
-			<input type="file" name="file" />        
-		</div>
+		
 			
-        		
+			
+			
+        </div>
+        <h4>Note: </h4>
+          <p><label for="note"></label>
+			<input class="form-control input-lg" type="text" id="note" placeholder="What did you think of it" th:field="*{note}" /></p>
+			<div th:if="${#fields.hasErrors('note')}" th:errors="*{note}">Note Error</div>
+         		
+			<h4>Points: </h4>
+          <p><label for="points"></label>
+			<input type="text" id="points" placeholder="How high would you rate it?" th:field="*{points}" /></p>
+			<div th:if="${#fields.hasErrors('points')}" th:errors="*{points}">points Error</div>
 			
     		
    
       </div>	
-         		<input type="submit" value="Put a bottle into the cellar" class="btn btn-success"></input>
+         		<input type="submit" value="Post the wine" class="btn btn-success"></input>
       		
 	
 	

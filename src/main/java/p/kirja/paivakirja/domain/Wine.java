@@ -16,12 +16,12 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
 @Entity
-
 public class Wine {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long wineid;
+	private long id;
+	
 	private String producer;
 	private String name; 
 	private String appellation;
@@ -36,38 +36,41 @@ public class Wine {
 	@JoinColumn(name = "typeid")
 	@JsonManagedReference
 	private Type type;
-	
-	/*@JsonBackReference
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "note")
-	private List<Note> notes; */
 
 	public Wine() {
 		super();
 	}
 
-	public Wine(String producer, String name, String appellation, String region, String country,
-			String grapes, String vintage, Type type, String note, String points) {
+	public Wine(
+			String producer, 
+			String name, 
+			String vintage, 
+			String appellation, 
+			String region, 
+			String country, 
+			String grapes,
+			Type type, 
+			String note, 
+			String points) {
 		super();
-		this.wineid = wineid;
 		this.producer = producer;
 		this.name = name;
+		this.vintage = vintage;
 		this.appellation = appellation;
 		this.region = region;
 		this.country = country;
 		this.grapes = grapes;
-		this.vintage = vintage;
 		this.type = type;
 		this.note = note;
 		this.points = points;
-
 	}
 
-	public long getWineid() {
-		return wineid;
+	public long getId() {
+		return id;
 	}
 
-	public void setWineid(long wineid) {
-		this.wineid = wineid;
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getProducer() {
@@ -126,14 +129,6 @@ public class Wine {
 		this.vintage = vintage;
 	}
 
-	public Type getType() {
-		return type;
-	}
-
-	public void setType(Type type) {
-		this.type = type;
-	}
-
 	public String getNote() {
 		return note;
 	}
@@ -141,8 +136,6 @@ public class Wine {
 	public void setNote(String note) {
 		this.note = note;
 	}
-	
-	
 
 	public String getPoints() {
 		return points;
@@ -152,11 +145,23 @@ public class Wine {
 		this.points = points;
 	}
 
+	public Type getType() {
+		return type;
+	}
+
+	public void setType(Type type) {
+		this.type = type;
+	}
+
 	@Override
 	public String toString() {
-		return "Wine [producer=" + producer + ", name=" + name + ", appellation=" + appellation
+		return "Wine [id=" + id + ", producer=" + producer + ", name=" + name + ", appellation=" + appellation
 				+ ", region=" + region + ", country=" + country + ", grapes=" + grapes + ", vintage=" + vintage
-				+ ", type=" + type + ", note=" + note +", points=" + points + "]";
+				+ ", note=" + note + ", points=" + points + ", type=" + type + "]";
 	}
+
 	
-	}
+	
+	
+	
+}
