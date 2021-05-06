@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
 
-    <title>Add a wine</title>
+    <title>Lisää viini</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
     
@@ -10,7 +10,7 @@
 <style>
 .container{
 	text-align: center;
-	padding-top: 150px;
+	padding-top: 100px;
 	padding-bottom: 250px;
 	
 	position: center;
@@ -46,7 +46,7 @@ body, html {
 
 .bg {
 
-  background-image: url("wachau.jpg");
+  background-image: url("tausta2.jpg");
   background-color: #000000;
   
 
@@ -69,86 +69,72 @@ max-width: 100px;
 <body>
 <div class="bg">
 <div class="container">
-<div class="header clearfix">
         <nav>
           <ul class="nav nav-pills pull-right">
             
-            <li role="presentation"><a href="/main">Back to the winelist</a></li>
+            <li role="presentation"><a href="/main">Takaisin listaukseen</a></li>
           </ul>
         </nav>
-        <h3 class="text-muted">Add a wine</h3>
-      </div>
+     <!--    <h3 class="text-muted">Lisää viini</h3> -->
       
 	
    
    <form th:object="${wine}" th:action="@{save}" action="#" method="post">
+               		<input type="submit" value="Tallenna viini" class="btn btn-success"></input>
+   
    <div class="row marketing">
         <div class="col-lg-6">
-          <h4>Producer: </h4>
+          <h4>Valmistaja: </h4>
           <p><label for="producer"></label>
-			<input type="text" placeholder="Who made your wine..." id="producer" th:field="*{producer}" />	</p>
-			<div th:if="${#fields.hasErrors('producer')}" th:errors="*{producer}">Producer Error</div>
+			<input type="text" placeholder="Viinin valmistajan nimi..." id="producer" th:field="*{producer}" />	</p>
 
-          <h4>Name: </h4>
+          <h4>Nimi: </h4>
           <p><label for="name"></label>
-			<input type="text" placeholder="Name of the wine..." id="name" th:field="*{name}" /></p>
-			<div th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div>			
+			<input type="text" placeholder="Viinin nimi..." id="name" th:field="*{name}" /></p>
 
-          <h4>Vintage: </h4>
+          <h4>Vuosikerta: </h4>
           <p><label for="vintage"></label>
-			<input type="text" id="vintage" th:field="*{vintage}" /></p>
+			<input type="text" placeholder="Viinin vuosikerta..." id="vintage" th:field="*{vintage}" /></p>
 			<div th:if="${#fields.hasErrors('vintage')}" th:errors="*{vintage}">Vintage Error</div>
 			
-			<h4>Type: </h4>
+			<h4>Tyyppi: </h4>
 			<select class=droppi id="typlist" th:field="*{type}">
        		<option th:each="type: ${types}" th:value="${type.typeid}" th:text="${type.name}"></option></select>
     		
         </div>
 
         <div class="col-lg-6">
-          <h4>Appellation: </h4>
+          <h4>Alkuperäluokitus: </h4>
           <p><label for="appellation"></label>
-			<input type="text" id="appellation" placeholder="What's the appellation..." th:field="*{appellation}" /></p>
-			<div th:if="${#fields.hasErrors('appellation')}" th:errors="*{appellation}">Appellation Error</div>
+			<input type="text" id="appellation" placeholder="DOC, IGP, AOC..." th:field="*{appellation}" /></p>
 			
-			<h4>Region: </h4>
+			<h4>Alue: </h4>
           <p><label for="region"></label>
-			<input type="text" id="region" placeholder="What's the region..." th:field="*{region}" /></p>
-			<div th:if="${#fields.hasErrors('region')}" th:errors="*{region}">Region Error</div>
+			<input type="text" id="region" placeholder="Viinin tuotantoalue..." th:field="*{region}" /></p>
 
 
-          <h4>Country: </h4>
+          <h4>Maa: </h4>
           <p><label for="country"></label>
-			<input type="text" id="country" placeholder="Which country is it from..." th:field="*{country}" /></p>
-			<div th:if="${#fields.hasErrors('country')}" th:errors="*{country}">Country Error</div>
+			<input type="text" id="country" placeholder="Maa, josta viini on..." th:field="*{country}" /></p>
 
 
-          <h4>Grapes: </h4>
+          <h4>Lajikkeet: </h4>
           <p><label for="grapes"></label>
-			<input type="text" id="grapes" placeholder="What's in the bottle..." th:field="*{grapes}" /></p>
-			<div th:if="${#fields.hasErrors('grapes')}" th:errors="*{grapes}">Grapes Error</div>
-			
-			
-			
-		
-			
-			
+			<input type="text" id="grapes" placeholder="Mistä rypälelajikkeista viini on..." th:field="*{grapes}" /></p>
+						
 			
         </div>
-        <h4>Note: </h4>
+        <h4>Muistiinpano: </h4>
           <p><label for="note"></label>
-			<input class="form-control input-lg" type="text" id="note" placeholder="What did you think of it" th:field="*{note}" /></p>
-			<div th:if="${#fields.hasErrors('note')}" th:errors="*{note}">Note Error</div>
+			<input class="form-control input-lg" type="text" id="note" placeholder="Mitä mieltä olit viinistä..." th:field="*{note}" /></p>
          		
-			<h4>Points: </h4>
+			<h4>Pisteet: </h4>
           <p><label for="points"></label>
-			<input type="text" id="points" placeholder="How high would you rate it?" th:field="*{points}" /></p>
-			<div th:if="${#fields.hasErrors('points')}" th:errors="*{points}">points Error</div>
+			<input class="form-control input-lg" type="text" id="points" placeholder="Kuinka monta pistettä 100:sta annat..." th:field="*{points}" /></p>
 			
     		
    
       </div>	
-         		<input type="submit" value="Post the wine" class="btn btn-success"></input>
       		
 	
 	
