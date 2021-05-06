@@ -10,13 +10,18 @@
 <style>
 .container{
 	text-align: center;
-	padding-top: 100px;
-	padding-bottom: 250px;
+	padding-top: 25px;
+	padding-bottom: 25px;
 	
 	position: center;
 	max-width: 50%;
 	max-height: 100%;
+	
+	 font-family: "Monaco", "Courier New", monospace;
+	    font-size: 50%;
    }
+   
+  
    
   
 
@@ -58,10 +63,12 @@ body, html {
 }
 
 .droppi{
-max-width: 100px;
+max-width: 100%;
 }
 
-
+.lista{
+font-size: 150%;
+}
 
 
 
@@ -72,7 +79,7 @@ max-width: 100px;
         <nav>
           <ul class="nav nav-pills pull-right">
             
-            <li role="presentation"><a href="/main">Takaisin listaukseen</a></li>
+            <li role="presentation" class=lista><a href="/main">Takaisin listaukseen</a></li>
           </ul>
         </nav>
      <!--    <h3 class="text-muted">Lisää viini</h3> -->
@@ -80,62 +87,62 @@ max-width: 100px;
 	
    
    <form th:object="${wine}" th:action="@{save}" action="#" method="post">
-               		<input type="submit" value="Tallenna viini" class="btn btn-success"></input>
+               		
    
    <div class="row marketing">
         <div class="col-lg-6">
           <h4>Valmistaja: </h4>
           <p><label for="producer"></label>
-			<input type="text" placeholder="Viinin valmistajan nimi..." id="producer" th:field="*{producer}" />	</p>
+			<input class="form-control input-lg" type="text" placeholder="Viinin valmistajan nimi..." id="producer" th:field="*{producer}" />	</p>
 
           <h4>Nimi: </h4>
           <p><label for="name"></label>
-			<input type="text" placeholder="Viinin nimi..." id="name" th:field="*{name}" /></p>
+			<input class="form-control input-lg" type="text" placeholder="Viinin nimi..." id="name" th:field="*{name}" /></p>
 
           <h4>Vuosikerta: </h4>
           <p><label for="vintage"></label>
-			<input type="text" placeholder="Viinin vuosikerta..." id="vintage" th:field="*{vintage}" /></p>
+			<input class="form-control input-lg" type="text" placeholder="Viinin vuosikerta..." id="vintage" th:field="*{vintage}" /></p>
 			<div th:if="${#fields.hasErrors('vintage')}" th:errors="*{vintage}">Vintage Error</div>
 			
 			<h4>Tyyppi: </h4>
-			<select class=droppi id="typlist" th:field="*{type}">
-       		<option th:each="type: ${types}" th:value="${type.typeid}" th:text="${type.name}"></option></select>
+			<p><label for="type"></label>
+			<select class="form-control input-lg" id="typlist" th:field="*{type}">
+       		<option th:each="type: ${types}" th:value="${type.typeid}" th:text="${type.name}"></option></select></p>
     		
         </div>
 
         <div class="col-lg-6">
           <h4>Alkuperäluokitus: </h4>
           <p><label for="appellation"></label>
-			<input type="text" id="appellation" placeholder="DOC, IGP, AOC..." th:field="*{appellation}" /></p>
+			<input class="form-control input-lg" type="text" id="appellation" placeholder="DOC, IGP, AOC..." th:field="*{appellation}" /></p>
 			
 			<h4>Alue: </h4>
           <p><label for="region"></label>
-			<input type="text" id="region" placeholder="Viinin tuotantoalue..." th:field="*{region}" /></p>
+			<input class="form-control input-lg" type="text" id="region" placeholder="Viinin tuotantoalue..." th:field="*{region}" /></p>
 
 
           <h4>Maa: </h4>
           <p><label for="country"></label>
-			<input type="text" id="country" placeholder="Maa, josta viini on..." th:field="*{country}" /></p>
+			<input class="form-control input-lg" type="text" id="country" placeholder="Maa, josta viini on..." th:field="*{country}" /></p>
 
 
           <h4>Lajikkeet: </h4>
           <p><label for="grapes"></label>
-			<input type="text" id="grapes" placeholder="Mistä rypälelajikkeista viini on..." th:field="*{grapes}" /></p>
+			<input class="form-control input-lg" type="text" id="grapes" placeholder="Mistä rypälelajikkeista viini on..." th:field="*{grapes}" /></p>
 						
 			
         </div>
         <h4>Muistiinpano: </h4>
           <p><label for="note"></label>
-			<input class="form-control input-lg" type="text" id="note" placeholder="Mitä mieltä olit viinistä..." th:field="*{note}" /></p>
-         		
+			<textarea class="form-control" type="text" id="note" placeholder="Mitä mieltä olit viinistä..." th:field="*{note}" /></p>
+
 			<h4>Pisteet: </h4>
           <p><label for="points"></label>
-			<input class="form-control input-lg" type="text" id="points" placeholder="Kuinka monta pistettä 100:sta annat..." th:field="*{points}" /></p>
-			
+			<input class="form-control" type="text" id="points" placeholder="Kuinka monta pistettä 100:sta annat..." th:field="*{points}" /></p>
     		
    
       </div>	
-      		
+      		<input type="submit" value="Tallenna viini" class="btn btn-outline-dark"></input>
 	
 	
 		</form>

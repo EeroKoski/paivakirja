@@ -10,12 +10,13 @@
 <style>
 .container{
 	text-align: center;
-	padding-top: 100px;
-	padding-bottom: 250px;
-	
+	padding-top: 25px;
+	padding-bottom: 25px;
 	position: center;
 	max-width: 50%;
 	max-height: 100%;
+	 font-family: "Monaco", "Courier New", monospace;
+	    font-size: 80%;
    }
    
   
@@ -96,11 +97,11 @@ body, html {
    
         <h4>Muistiinpano: </h4>
           <p><label for="note"></label>
-                 <input class="form-control input-lg" type="text" id="note" placeholder="What did you think of it" th:field="*{note}" /></p>
+                 <textarea class="form-control" type="text" id="note" placeholder="What did you think of it" th:field="*{note}" /></p>
          		
 			<h4>Pisteet: </h4>
           <p><label for="points"></label>
-			<input type="text" id="points" placeholder="How high would you rate it?" th:field="*{points}" /></p>
+			<input class="form-control input-lg" type="text" id="points" placeholder="How high would you rate it?" th:field="*{points}" /></p>
 			
     		
    
